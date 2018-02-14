@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	DefaultLogPath = "/var/log/awsdog/"
+	DefaultLogPath = "/var/log/go.awsdog/"
 )
 
 type (
