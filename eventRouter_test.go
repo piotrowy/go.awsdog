@@ -1,12 +1,20 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestEventRouter_Route(t *testing.T) {
 	var (
 		er = NewEventRouter()
-		th = testHandler{}
+		th = testHandler{
+			close:  false,
+			routed: false,
+			route:  make(chan Event),
+		}
 	)
+	go th.Start()
+	er.RegisterHandler(&th)
 	er.Route(testEvent{})
 
 	if !th.routed {

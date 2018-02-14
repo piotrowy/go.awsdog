@@ -1,11 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"os"
-	"regexp"
 	"testing"
-	"time"
 )
 
 const buffSize = 10
