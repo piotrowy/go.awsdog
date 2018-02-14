@@ -65,16 +65,16 @@ func (w *WatchDog) Close() {
 
 func (w *WatchDog) check() {
 	for _, v := range w.settings.Services {
-		go func() {
-			if checkService(v) {
+		go func(service string) {
+			if checkService(service) {
 				w.router.Route(ServiceDown{
-					Name:          v,
+					Name:          service,
 					Time:          time.Now(),
 					NumOfAttempts: w.settings.NumOfAttempts,
 					NumOfSecWait:  w.settings.NumOfSecWait,
 				})
 			}
-		}()
+		}(v)
 	}
 }
 
