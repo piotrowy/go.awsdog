@@ -31,7 +31,7 @@ func (s ServiceRestartReq) String() string {
 }
 
 func (s ServiceRestarted) String() string {
-	return fmt.Sprintf("Service %v restarted with result %v after %d times.", s.Name, s.Attempts, s.Result)
+	return fmt.Sprintf("Service %v restarted with result %v after %d times.", s.Name, s.Result, s.Attempts)
 }
 
 func NewServiceRestartHandler(router EventRouter, logCh chan<- interface{}, bufferSize int) EventHandler {
